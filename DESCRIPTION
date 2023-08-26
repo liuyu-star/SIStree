@@ -1,7 +1,7 @@
 Type: Package
 Package: SIStree
 Title: A Tree Approach to Model-free Variable Screening
-Version: 0.0.1.9000
+Version: 0.0.1.9001
 Authors@R: c(
     person("Yu", "Liu", , "liuyuchina123@gmail.com", role = c("aut", "cre", "cph")),
     person("Zhibo", "Cai", , "caizhibo@ruc.edu.cn", role = "aut")
