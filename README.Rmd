@@ -1,0 +1,68 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# SIStree
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of SIStree is to provides a fast and efficient ranking by the importance of variables for ultra-high dimensional data.
+
+## Installation
+
+You can install the development version of SIStree from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("liuyu-star/SIStree")
+```
+
+## Usage
+
+We show how to use the SIStree package with examples.
+
+
+* Simulation data with continuous response.
+```{r continuous}
+library(SIStree)
+X = matrix(rnorm(100*1000), 100, 1000)
+y = X[,1] + X[,2]^2 + 2*X[,4]*X[,5] + rnorm(100)
+sis = SIStree(X, y)
+# show the first 20 variables ranked by SIS
+sis$VarImp$rank.SIS[1:20]
+# show the first 20 variables ranked by SIStree
+sis$VarImp$rank.SIStree[1:20]
+
+set.seed(230826)
+sis = SISforest(X, y, parallel=FALSE)
+# show the first 20 variables ranked by SISforest
+sis$VarImp$rank.SISforest[1:20]
+```
+
+
+* Real data with categorical response.
+```{r categorical}
+data(breast_cancer)
+sis <- SIStree(as.factor(diagnosis) ~ ., breast_cancer[,-1], criteria='Gini')
+#show variables ranked by SIStree
+sis$VarImp$rank.SIStree
+
+set.seed(230826)
+sis <- SISforest(as.factor(diagnosis) ~ ., breast_cancer[,-1],
+        criteria='Gini', parallel=FALSE)
+#show variables ranked by SISforest
+sis$VarImp$rank.SISforest
+```
+
