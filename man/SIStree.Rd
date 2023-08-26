@@ -45,7 +45,7 @@ SIStree(X, ...)
 
 \item{data}{Training data of class \code{data.frame} containing variables named in the formula. If \code{data} is missing it is obtained from the current environment by \code{formula}.}
 
-\item{criteria}{The independence measurement criteria used for splitting the nodes. We provided seven criteria, and the default being distance correlation coefficient (criteria='DCor').}
+\item{criteria}{The independence measurement criteria used for splitting the nodes. We provided seven criteria (default criteria='DCor'), for details see \code{\link{Split}}.}
 
 \item{MaxDepth}{The maximum depth of the tree (default \code{Inf}).}
 

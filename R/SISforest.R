@@ -6,7 +6,7 @@
 #' @param data Training data of class \code{data.frame} containing variables named in the formula. If \code{data} is missing it is obtained from the current environment by \code{formula}.
 #' @param X An n by d numeric matrix (preferable) or data frame.
 #' @param y A response vector of length n.
-#' @param criteria The independence measurement criteria used for splitting the nodes. We provided seven criteria, and the default being distance correlation coefficient (criteria='DCor').
+#' @param criteria The independence measurement criteria used for splitting the nodes. We provided seven criteria (default criteria='DCor'), for details see \code{\link{Split}}.
 #' @param ntrees The number of trees in the forest (default 100).
 #' @param storeOOB If TRUE then the samples omitted during the creation of a tree are stored as part of the tree (default TRUE).
 #' @param replacement if TRUE then n samples are chosen, with replacement, from training data (default TRUE).
@@ -47,11 +47,11 @@
 #' #simulation data with continuous response.
 #' X = matrix(rnorm(100*1000), 100, 1000)
 #' y = X[,1] + X[,2]^2 + 2*X[,4]*X[,5] + rnorm(100)
-#'
+#' \dontrun{
 #' sis = SISforest(X, y, parallel=FALSE)
 #' # show the first 20 variables ranked by SISforest
 #' sis$VarImp$rank.SISforest[1:20]
-#'
+#' }
 #'
 #' #real data with categorical response.
 #' data(breast_cancer)

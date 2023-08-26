@@ -6,7 +6,7 @@
 #' @param data Training data of class \code{data.frame} containing variables named in the formula. If \code{data} is missing it is obtained from the current environment by \code{formula}.
 #' @param X An n by d numeric matrix (preferable) or data frame.
 #' @param y A response vector of length n.
-#' @param criteria The independence measurement criteria used for splitting the nodes. We provided seven criteria, and the default being distance correlation coefficient (criteria='DCor').
+#' @param criteria The independence measurement criteria used for splitting the nodes. We provided seven criteria (default criteria='DCor'), for details see \code{\link{Split}}.
 #' @param MaxDepth The maximum depth of the tree (default \code{Inf}).
 #' @param numNode Number of nodes that can be used by the tree (default \code{Inf}).
 #' @param MinLeaf Minimum sample size for leaf nodes (Default 10).

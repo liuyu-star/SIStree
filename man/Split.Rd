@@ -12,7 +12,7 @@ Split(
 )
 }
 \arguments{
-\item{x}{If \code{criterion="Gini"} x is an n by p numeric matrix, otherwise it is a vector of length n An n.}
+\item{x}{If \code{criterion="Gini"} x is an n by p numeric matrix, otherwise it is a vector of length n.}
 
 \item{y}{A response vector of length n.}
 
@@ -41,6 +41,7 @@ The splitting variable and the splitting value corresponding. If \code{criterion
 the optimal splitting variable and splitting value are chosen by one of seven independence measurement criteria.
 }
 \examples{
+\dontrun{
 #simulation data with continuous response.
 X = matrix(rnorm(100*1000), 100, 1000)
 y = X[,1] + X[,2]^2 + 2*X[,4]*X[,5] + rnorm(100)
@@ -51,9 +52,9 @@ y = X[,1] + X[,2]^2 + 2*X[,4]*X[,5] + rnorm(100)
 (cutval <- Split(X[, cutvar], y,criteria='MI',MinLeaf=10))
 
 #if criteria is 'DCor','HHG' or 'HSIC'.
-(varcor=apply(X, 2, HHG, y))
+(varcor=apply(X, 2, DCor, y))
 (cutvar=which.max(varcor))
-(cutval <- Split(X[, cutvar], y,criteria='HHG',MinLeaf=10))
+(cutval <- Split(X[, cutvar], y,criteria='DCor',MinLeaf=10))
 
 
 #real data with categorical response.
@@ -64,7 +65,7 @@ criteria='Gini',MinLeaf=10)
 (varcor=gini$varGini)
 (cutvar=gini$BestCutVar)
 (cutval=gini$BestCutVal)
-
+}
 }
 \seealso{
 \code{\link{SISforest}} \code{\link{SIStree}}
