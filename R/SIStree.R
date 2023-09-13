@@ -297,12 +297,13 @@ SIStree.compute <- function(formula, Call, varName, X, y, criteria,MaxDepth, num
   }
 
 
-  if (is.infinite(MaxDepth)) {
+  #if (is.infinite(MaxDepth)) {
     numNode <- min(numNode, sum(2^(0:ceiling(log2(n / MinLeaf)))))
-  } else {
+  #} else {
     #MaxDepth <- min(MaxDepth, ceiling(log2(n / MinLeaf)), n / MinLeaf - 1)
-    numNode <- min(numNode, sum(2^(0:MaxDepth)))
-  }
+  #  numNode <- min(numNode, sum(2^(0:MaxDepth)))
+  #}
+
   max_depth <- max(ceiling(log2(n / MinLeaf)), n / MinLeaf - 1)
 
   nodeXIndx <- vector("list", numNode + 1)
