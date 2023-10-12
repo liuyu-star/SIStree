@@ -304,7 +304,7 @@ SIStree.compute <- function(formula, Call, varName, X, y, criteria,MaxDepth, num
   #  numNode <- min(numNode, sum(2^(0:MaxDepth)))
   #}
 
-  max_depth <- max(ceiling(log2(n / MinLeaf)), n / MinLeaf - 1)
+  max_depth <- ceiling(max(log2(n / MinLeaf), n / MinLeaf - 1))
 
   nodeXIndx <- vector("list", numNode + 1)
   nodeXIndx[[1]] <- 1:n
@@ -370,7 +370,13 @@ SIStree.compute <- function(formula, Call, varName, X, y, criteria,MaxDepth, num
     if (criteria != "Gini") {
       cutval <- Split(X[Indx, cutvar], y[Indx],criteria,MinLeaf)
     }
-
+    Lindex <- which(X[Indx, cutvar] <= cutval)
+    Rindex=setdiff(seq(nodesize), Lindex)
+    #if (min(Lindex,Rindex) <= MinLeaf){
+    #  layerVarCor[-seq(depth),]=layerVarCor[-seq(depth),]+matrix(varcor*nodesize/n,max_depth-depth,p,byrow = TRUE)
+    #  currentNode <- currentNode + 1
+     # next
+    #}
 
     #TF <- min(length(Lindex), length(Indx) - length(Lindex)) <= MinLeaf
     nodeCutVar[currentNode]=cutvar

@@ -74,7 +74,7 @@ Split<- function(x,y,criteria=c('DCor',"Pearson","CvM","MI","HHG","HSIC","Gini")
 
     #dist=ifelse(n > 100,(n - 1) / 99,1);
     #dist=1;
-    seqNode=seq(MinLeaf,n-MinLeaf,length.out =100)
+    seqNode=ceiling(seq(MinLeaf,n-MinLeaf,length.out =100))
 
     splitFun <- match.fun(criteria, descend = TRUE)
     bestcor=1.0e10;
