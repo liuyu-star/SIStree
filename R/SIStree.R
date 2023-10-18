@@ -372,11 +372,12 @@ SIStree.compute <- function(formula, Call, varName, X, y, criteria,MaxDepth, num
     }
     Lindex <- which(X[Indx, cutvar] <= cutval)
     Rindex=setdiff(seq(nodesize), Lindex)
-    #if (min(Lindex,Rindex) <= MinLeaf){
-    #  layerVarCor[-seq(depth),]=layerVarCor[-seq(depth),]+matrix(varcor*nodesize/n,max_depth-depth,p,byrow = TRUE)
-    #  currentNode <- currentNode + 1
-     # next
-    #}
+    #if (min( Lindex,Rindex) <= MinLeaf){
+    if (min(length(Lindex),length(Rindex)) <= 1){
+      layerVarCor[-seq(depth),]=layerVarCor[-seq(depth),]+matrix(varcor*nodesize/n,max_depth-depth,p,byrow = TRUE)
+      currentNode <- currentNode + 1
+      next
+    }
 
     #TF <- min(length(Lindex), length(Indx) - length(Lindex)) <= MinLeaf
     nodeCutVar[currentNode]=cutvar
