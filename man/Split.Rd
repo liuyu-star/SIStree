@@ -17,7 +17,7 @@ Split(
 \item{y}{A response vector of length n.}
 
 \item{criteria}{The independence measurement criteria used for splitting the nodes. We provided seven criteria, and the default being distance correlation coefficient (criteria='DCor').
-The following six criterions to select the splitting variable first, and then use this function to select the splitting value.\itemize{
+The following seven criterions to select the splitting variable first, and then use this function to select the splitting value.\itemize{
 \item{'DCor': Distance correlation coefficient.}
 \item{'Pearson': Pearson correlation coefficient.}
 \item{'CvM': Cramér's V correlation coefficient}
